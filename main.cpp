@@ -94,8 +94,8 @@ uint_fast8_t getNRF24report(RF24 *radio, report_t *gamepad_report)
 		while (!done) {
 			// Fetch the payload, and see if this was the last one.
 			done = radio->read(gamepad_report, sizeof(report_t));
+			return 0;
 		}
-		return 0;
 	}
 	return 1;
 }
@@ -144,17 +144,17 @@ uint_fast8_t drive(report_t *gamepad_report)
 	if(!checkifButtonIsPressed(gamepad_report, L1_BUTTON))
 	{
 		if (y > 0){
-			speed = map(y, 1, 127, 100, 700);
+			speed = map(y, 1, 127, 800, 1300);
 		}else if (y < 0){
-			speed = map(-y, 1, 127, 1300, 800);
+			speed = map(-y, 1, 127, 700, 100);
 		}
 	}
 	else
 	{
 		if (y > 0){
-			speed = map(y, 1, 127, 400, 700);
+			speed = map(y, 1, 127, 800, 1000);
 		}else if (y < 0){
-			speed = map(-y, 1, 127, 1000, 800);
+			speed = map(-y, 1, 127, 800, 400);
 		}
 	}
 	xPWMDutySetPrec(xPWMA_BASE, xPWM_CHANNEL0, speed);
