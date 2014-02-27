@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="4.8.3 -mcpu=cortex-m0plus -mthumb -g -nostartfiles -Map=test.map -Os --gc-sections -lstdc++ -LC:\CooCox\CoIDE\configuration\ProgramData\rc-car-freescale -TC:\CooCox\CoIDE\configuration\ProgramData\rc-car-freescale/arm-gcc-link.ld -g">
+      <target file="test.elf" lastModified="14470acdfa2">
+         <source file="..\obj\startup_coide.o" lastModified="14470642a07"/>
+         <source file="..\obj\xdebug.o" lastModified="14470642a4c"/>
+         <source file="..\obj\xcore.o" lastModified="14470642b12"/>
+         <source file="..\obj\xgpio.o" lastModified="14470642c14"/>
+         <source file="..\obj\main.o" lastModified="14470acdb4b"/>
+         <source file="..\obj\xwdt.o" lastModified="14470642d28"/>
+         <source file="..\obj\printf.o" lastModified="14470642e18"/>
+         <source file="..\obj\xsysctl.o" lastModified="14470643054"/>
+         <source file="..\obj\xspi.o" lastModified="14470643119"/>
+         <source file="..\obj\syscalls.o" lastModified="14470643193"/>
+         <source file="..\obj\RF24.o" lastModified="1447064335b"/>
+         <source file="..\obj\xpwm.o" lastModified="1447064342c"/>
+         <source file="..\obj\spi-cox.o" lastModified="144706434a7"/>
+         <source file="..\obj\xuart.o" lastModified="14470643615"/>
+      </target>
+   </processor>
+</history>
