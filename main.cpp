@@ -5,6 +5,8 @@
 #define SYSTICKS_PER_SECOND     1000
 #define TIMEOUT 240
 
+#define STEER_OFFSET	10
+
 #include "xhw_types.h"
 #include "xhw_memmap.h"
 #include "xspi.h"
@@ -75,7 +77,7 @@ void pwmInit(){
 	xPWMOutputEnable(xPWMA_BASE, xPWM_CHANNEL0);
 	xPWMStart(xPWMA_BASE, xPWM_CHANNEL1);
 	xPWMFrequencySet(xPWMA_BASE, xPWM_CHANNEL1, 50);
-	xPWMDutySetPrec(xPWMA_BASE, xPWM_CHANNEL1, 750);
+	xPWMDutySetPrec(xPWMA_BASE, xPWM_CHANNEL1, 750 + STEER_OFFSET);
 	xPWMOutputEnable(xPWMA_BASE, xPWM_CHANNEL1);
 	xPWMStart(xPWMA_BASE, xPWM_CHANNEL1);
 }
@@ -138,7 +140,7 @@ uint_fast8_t drive(report_t *gamepad_report)
 			pos = map(ry, 1, 127, 750, 680);
 		}
 	}
-	xPWMDutySetPrec(xPWMA_BASE, xPWM_CHANNEL1, pos);
+	xPWMDutySetPrec(xPWMA_BASE, xPWM_CHANNEL1, pos + STEER_OFFSET);
 
 	unsigned int speed = 750;
 	if(!checkifButtonIsPressed(gamepad_report, L1_BUTTON))
@@ -184,7 +186,7 @@ int main() {
 
 		// if there is data ready
 		report_t gamepad_report;
-		if (getNRF24report(&radio, &gamepad_report))
+		if (!getNRF24report(&radio, &gamepad_report))
 		{
 
 			drive(&gamepad_report);
